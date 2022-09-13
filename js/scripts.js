@@ -12,14 +12,11 @@ function loadImage1(){
       var xttp = new XMLHttpRequest();
       xttp.onreadystatechange = function () {
         if ((this.readyState == 4) && (this.status == 200)) {
-          if(window.cnt<3){
             var entry = JSON.parse(this.responseText);
             fig = fig.replace(new RegExp("{{src}}", "g"), entry[0].src);
             fig = fig.replace(new RegExp("{{description}}", "g"), entry[0].description);
 
             document.querySelector(".image-frame").innerHTML = document.querySelector(".image-frame").innerHTML + fig;
-            window.cnt++;
-          }
         }
       };
       xttp.open("GET", "data/data.json", true);
